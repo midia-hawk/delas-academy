@@ -25,22 +25,8 @@ function scrollToSection(sectionId) {
 
 // Função para abrir WhatsApp com mensagens personalizadas
 function abrirWhatsApp(tipo) {
-    const numeroWhatsApp = '5534999999999';
-    let mensagem = '';
-    
-    switch(tipo) {
-        case 'desconto':
-            mensagem = 'Olá! Quero garantir minha vaga com desconto antecipado na Virada Delas!';
-            break;
-        case 'virada':
-            mensagem = 'Olá! Quero viver minha virada agora!';
-            break;
-        case 'contato':
-            mensagem = 'Olá! Gostaria de saber mais sobre a Virada de Chave.';
-            break;
-        default:
-            mensagem = 'Olá! Tenho interesse na Virada de Chave.';
-    }
+    const numeroWhatsApp = '5534997152921';
+    const mensagem = 'Olá! Quero garantir minha vaga no Delas Academy!';
     
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
     window.open(url, '_blank');
