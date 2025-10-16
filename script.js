@@ -103,8 +103,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Função para adicionar efeitos de parallax suave
+// Função para adicionar efeitos de parallax suave (desabilitada no mobile)
 window.addEventListener('scroll', () => {
+    // Desabilitar parallax no mobile para evitar problemas de navegação
+    if (isMobile()) return;
+    
     const scrolled = window.pageYOffset;
     const parallaxElements = document.querySelectorAll('.hero-decoration-1, .hero-decoration-2');
     
@@ -302,37 +305,12 @@ otimizarPerformance();
 
 // Função para adicionar suporte a gestos em dispositivos móveis
 function adicionarSuporteGestos() {
-    if (!isMobile()) return;
-    
-    let startY = 0;
-    let startX = 0;
-    
-    document.addEventListener('touchstart', function(e) {
-        startY = e.touches[0].clientY;
-        startX = e.touches[0].clientX;
-    });
-    
-    document.addEventListener('touchend', function(e) {
-        const endY = e.changedTouches[0].clientY;
-        const endX = e.changedTouches[0].clientX;
-        const diffY = startY - endY;
-        const diffX = startX - endX;
-        
-        // Detectar swipe para cima (scroll para próxima seção)
-        if (Math.abs(diffY) > Math.abs(diffX) && diffY > 50) {
-            const secoes = ['programa', 'investimento'];
-            const secaoAtual = window.location.hash.replace('#', '');
-            const indiceAtual = secoes.indexOf(secaoAtual);
-            
-            if (indiceAtual < secoes.length - 1) {
-                scrollToSection(secoes[indiceAtual + 1]);
-            }
-        }
-    });
+    // Função desabilitada para evitar scroll automático indesejado no mobile
+    return;
 }
 
-// Inicializar suporte a gestos
-adicionarSuporteGestos();
+// Não inicializar suporte a gestos
+// adicionarSuporteGestos();
 
 // Função para analytics simples (opcional)
 function trackEvent(evento, dados = {}) {
